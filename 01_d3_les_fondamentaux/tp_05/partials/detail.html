@@ -1,0 +1,18 @@
+<table>
+    <tr>
+        <th>Détail</th>
+    </tr>
+    <tr><td>Nom</td><td class="data"></td></tr>
+    <tr><td>Population</td><td class="data"></td></tr>
+    <tr><td>Superficie</td><td class="data"></td></tr>
+    <tr><td>Rang</td><td class="data"></td></tr>
+</table>
+
+
+{"nom" : "Bordeaux", "population" : 215374, "superficie" : 49.4, "rang" : "9"}
+
+
+var source = ["Bordeaux",215374,49.4,"9"]
+d3.selectAll("td.data").data(source).text(function(zzzzz) {
+  return zzzzz;
+});
