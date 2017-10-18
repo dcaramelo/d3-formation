@@ -1,39 +1,33 @@
 'use strict'
 
-const svg = d3.select('body').select('svg')
-
-const bounceNext = (current) => {
-  const nextVille = current + 1
-
-  d3.select(`g.ville-${current}`)
-    .transition()
-    .delay(50)
-    .duration(600)
-    .ease(d3.easePolyOut)
-    .attr('transform', `translate(${current * 100}, 400)`)
-    .on('end', () => bounceNext(nextVille))
-}
+const svg = d3.select('body svg')
 
 d3.json('json/villes.json', (data) => {
-  const minMax = d3.extent(data, (ville) => ville.population)
-  const ramp = d3.scaleLinear().domain(minMax).range([40, 50])
+  const max = d3.max(data, (ville) => ville.population)
+  const min = d3.min(data, (ville) => ville.population)
+  const ramp = d3.scaleLinear().domain([min, max]).range([20, 40])
 
-  data.forEach((ville, i) => {
-    svg.append('g').classed(`ville-${i}`, true)
+  data.forEach((v, i) => {
+    const g = svg.append('g')
 
-    d3.select(`g.ville-${i}`).append('circle')
-      .attr('cx', 50)
-      .attr('cy', -200)
-      .attr('r', ramp(ville.population))
+    g.append('circle')
+      .attr('cy', -100)
+      .attr('cx', 50 * (i + 1))
+      .attr('r', ramp(v.population))
       .style('fill', 'red')
 
-    d3.select(`g.ville-${i}`).append('text').text(ville.nom)
-      .attr('x', 50)
-      .attr('y', -135)
+    g.append('text')
+      .attr('y', -20)
+      .attr('x', 50 * (1 + i))
       .style('text-anchor', 'middle')
+      .html(v.nom)
 
-    d3.select(`g.ville-${i}`).attr('transform', `translate(${i * 100}, 20)`)
+    g.attr('transform', `translate(${(i) * 50}, 0)`)
+      .transition()
+      .delay(1000 * (1 + i))
+      .duration(1000)
+      .ease(d3.easeCubic)
+      .attr('transform', `translate(${(i) * 50}, 200)`)
   })
-
-  bounceNext(0)
 })
+

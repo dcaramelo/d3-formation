@@ -1,21 +1,18 @@
 'use strict'
 
-const maxPopulation = d3.max(villes, (v) => v.population)
+let max = Math.max(...villes.map(function(o) { return o.population }))
 
-const barWidth = (population) => `${population / maxPopulation * 1000}px`
-
-const chart = d3.select('body')
+d3.select('body')
   .append('div').classed('chart', true)
-
-chart.selectAll('div.line')
+  .selectAll('div')
   .data(villes)
   .enter().append('div').classed('line', true)
 
-d3.selectAll('div.line')
-  .append('div').classed('label', true)
+const lines = d3.selectAll('.line')
+
+lines.append('div').classed('label', true)
   .text((d) => d.nom)
 
-d3.selectAll('div.line')
-  .append('div').classed('bar', true)
-  .style('width', (d) => barWidth(d.population))
+lines.append('div').classed('bar', true)
+  .style('width', (d) => d.population / max * 50 + '%')
   .text((d) => d.population)
