@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>TP 07 - D3 js</title>
+	<title>TP 06 - D3 js</title>
 	<meta charset="utf-8">
 	<script src="d3/d3.v4.js"></script>
 
@@ -9,10 +9,35 @@
 <body>
 
 <div>
+	<button id="previous">Reculer</button>
 	<button id="next">Avancer</button>
+	<div>
+		<input type='radio' name='group' value='natural' checked="true"/>Natural
+		<input type='radio' name='group' value='step' />Step
+		<input type='radio' name='group' value='basis' />Basis
+	</div>
 </div>
+ <svg style="width:800px;height:800px;border:1px lightgray solid;" >
+	 <defs>
+		 <linearGradient id="myGradient" x1="0%" y1="50%" x2="100%" y2="50%" >
+			 <stop offset="0%" style="stop-color:rgb(255,255,85);stop-opacity:0.5" />
+			 <stop offset="50%" style="stop-color:rgb(255,46,16);stop-opacity:1" />
+			 <stop offset="100%" style="stop-color:rgb(255,255,85);stop-opacity:0.5" />
+		 </linearGradient>
+		 <linearGradient id="myGradient3" x1="50%" y1="0%" x2="50%" y2="100%" >
+			 <stop offset="0%" style="stop-color:rgb(255,255,85);stop-opacity:0" />
+			 <stop offset="5%" style="stop-color:rgb(255,255,85);stop-opacity:0.5" />
+			 <stop offset="50%" style="stop-color:rgb(255,46,16);stop-opacity:1" />
+			 <stop offset="95%" style="stop-color:rgb(255,255,85);stop-opacity:0.5" />
+			 <stop offset="100%" style="stop-color:rgb(255,255,85);stop-opacity:0" />
+		 </linearGradient>
+		 <linearGradient id="myGradient2" x1="50%" y1="0%" x2="50%" y2="100%" >
+			 <stop offset="0%" style="stop-color:rgb(255,170,50);stop-opacity:1" />
+			 <stop offset="100%" style="stop-color:rgb(255,46,16);stop-opacity:1" />
+		 </linearGradient>
+	 </defs>
+ </svg>
 
-<svg style="width:1000px;height:800px;border:1px lightgray solid;" ></svg>
 
 <script src="app.js"></script>
 </body>
