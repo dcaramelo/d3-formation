@@ -4,7 +4,7 @@ const svg = d3.select('svg')
 const margin = {top: 100, right: 100, bottom: 100, left: 100}
 const width = +parseInt(svg.style('width'), 10) - margin.left - margin.right
 const height = +parseInt(svg.style('height'), 10) - margin.top - margin.bottom
-const g = svg.append('g').classed('global', true).attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+const g = svg.append('g').classed('global', true).attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
 const formatTime = d3.timeFormat('%d %b')
 
